@@ -1,2 +1,2 @@
-# scoreBoardTime
-react
+# ScoreBoard
+uso de react

@@ -1,2 +1,0 @@
-# ScoreBoard
-uso de react
