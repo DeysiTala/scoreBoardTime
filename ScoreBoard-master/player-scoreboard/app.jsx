@@ -62,19 +62,20 @@ const Header = (props)=>{
  let points =props.players.map((e) => e.score).reduce((a,b) =>{return a+ b});
  return(
    <div className="header">
-     <div className= "count">
-       <table>
+   
+       <table className="stats">
          <tr><td>PLAYERS:</td>{props.players.length}</tr>
          <tr><td>TOTAL:</td>{points}</tr>
          </table>
-         </div>
+         <h1>SCOREBOARD</h1>
+         
          <div className="stopwatch">
-           <h3>STOPWATCH</h3>
-           <h1 className="stopwatch-time">0</h1>
-           <p><button>START</button>  <button>RESET</button></p>
+           <h2>STOPWATCH</h2>
+           <div className="stopwatch-time"></div>
+           <p><button >START</button>  <button>RESET</button></p>
            
            </div>
-           </div>
+        </div>  
  )
 }
 const PlayerList=(props)=>{
@@ -117,5 +118,6 @@ const Application = ({title, players}) => {
    </div>
    ) ;
 }
+//Creando el time
 
 ReactDOM.render(<Application title="Scoreboard" players = {PLAYERS}/>, document.getElementById('container'));
