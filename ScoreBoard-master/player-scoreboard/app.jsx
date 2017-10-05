@@ -25,23 +25,13 @@ let PLAYERS = [
 //import React from "react";
 //import ReactDOM from "react-dom"; 
 
-class TemporalComponent extends React.Component {
 
-  render() {
-    return (
-      <div>
-        {(new Date()).toLocaleTimeString()}
-      </div>
-    );
-  }
-
-}
 
 class Timer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: new Date()
+      date:0
     }
   }
   render() {
@@ -52,17 +42,20 @@ class Timer extends React.Component {
     const stop = (e) => {
       this.stopTimer();
     }
+    const reset = (e) => {
+      this.resetTimer();
+    }
     return (
       <div>
         <h2> {title} </h2>
 
-        
+
         <button onClick={start}> start </button>
-<button onClick={stop}> stop </button>
+        <button onClick={stop}> stop </button>
+        <button onClick={reset}> reset </button>
 
-        <p> {this.state.date.toLocaleTimeString()}</p>
+        <p> {this.state.date}</p>
 
-        <span> <TemporalComponent /> </span>
       </div>
     );
   }
@@ -70,13 +63,19 @@ class Timer extends React.Component {
   startTimer() {
     this.timer = setInterval(() => {
       this.setState({
-        date: new Date()
+        date: this.state.date +1
       });
     }, 1000);
   }
   //componentWillUnmount
   stopTimer() {
     clearInterval(this.timer);
+  }
+  resetTimer() {
+    clearInterval(this.timer);
+    this.setState({
+  date: 0
+    });
   }
 }
 
@@ -133,10 +132,8 @@ const Header = (props) => {
       <div className="stopwatch">
         <h2>STOPWATCH</h2>
         <div className="stopwatch-time" id="contador">
-          <Timer/>
+          <Timer />
         </div>
-       
-
       </div>
     </div>
   )
