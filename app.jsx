@@ -31,13 +31,22 @@ class Timer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      date:0
+      date: 0
     }
   }
   render() {
     const { title } = this.props;
     const start = (e) => {
+      if(e.target.textContent == "start")
+        {
+          e.target.textContent = "stop";
+        }
+        else
+          {
+            (e.target.textContent = "start")
+          }     
       this.startTimer();
+
     }
     const stop = (e) => {
       this.stopTimer();
@@ -63,18 +72,22 @@ class Timer extends React.Component {
   startTimer() {
     this.timer = setInterval(() => {
       this.setState({
-        date: this.state.date +1
+        date: this.state.date + 1
       });
     }, 1000);
+
+    //
+   
   }
   //componentWillUnmount
   stopTimer() {
     clearInterval(this.timer);
+ 
   }
   resetTimer() {
     clearInterval(this.timer);
     this.setState({
-  date: 0
+      date: 0
     });
   }
 }
