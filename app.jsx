@@ -60,7 +60,7 @@ class Timer extends React.Component {
 
 
         <button onClick={start}> start </button>
-        <button onClick={stop}> stop </button>
+        
         <button onClick={reset}> reset </button>
 
         <p> {this.state.date}</p>
